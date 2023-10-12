@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
 import Navbar from '../../components/common/Navbar/Navbar';
 import ChatUserList from '../../components/Chat/ChatUserList';
 import styled from 'styled-components';
 import BodyGlobal from './../../styles/BodyGlobal';
-import Layout from "../../styles/Layout";
+import Layout from '../../styles/Layout';
 
 const CommonWrapper = styled.section``;
 
 function ChatPage() {
+  const [iconColor, setIconColor] = useState(false);
+
   return (
     <Layout>
       <HeaderBasicNav />
@@ -26,7 +28,7 @@ function ChatPage() {
         </CommonWrapper>
       </BodyGlobal>
 
-      <Navbar homeV={true} chatV={false} postV={true} profileV={true} />
+      <Navbar chatIconColor={true} />
     </Layout>
   );
 }

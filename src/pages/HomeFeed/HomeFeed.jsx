@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useRecoilValue } from 'recoil';
-// import { useNavigate } from 'react-router-dom';
-import accountNameAtom from '../../atom/accountName';
 import styled from 'styled-components';
 import HomePost from '../../components/HomePost/HomePost';
 import Navbar from '../../components/common/Navbar/Navbar';
 import { HeaderBasicNav } from '../../components/common/Header/Header';
-import authAtom from '../../atom/authToken';
 import UseFetchToken from '../../Hooks/UseFetchToken';
 import Layout from '../../styles/Layout';
 import HomePage from '../HomePage/HomePage';
 
-function HomeFeed(props) {
+function HomeFeed() {
   const { GetHomeFeedData } = UseFetchToken();
   const [userData, setUserData] = useState([]);
   const postListRef = useRef(null);
@@ -60,23 +56,15 @@ function HomeFeed(props) {
           <HomePage />
         )}
       </MyHomePostwarpper>
-      <Navbar homeV={false} chatV={true} postV={true} profileV={true} />
+      <Navbar homeIconColor={true} />
     </Layout>
   );
 }
-
-const HomePostImg = styled.img`
-  width: 100%;
-  aspect-ratio: 5 / 3;
-  border-radius: 10px;
-  object-fit: cover;
-`;
 
 const MyHomePostwarpper = styled.div`
   height: 86vh;
   padding-bottom: 20px;
   overflow: scroll;
-  /* box-shadow: inset 0px 0px 3px 5px rgb(0, 38, 255); */
 
   .icon-wrapper {
     margin: 10px 0;

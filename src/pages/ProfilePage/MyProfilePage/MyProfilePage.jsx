@@ -21,6 +21,7 @@ export default function MyProfilePage() {
   const accountName = location.state.userData.user.accountname;
 
   const userData = location.state.userData.user;
+  console.log(userData);
   const handleClickList = e => {
     e.preventDefault();
     if (!isClickedList) {
@@ -67,7 +68,7 @@ export default function MyProfilePage() {
         {isClickedList && <MyHomePost accountName={accountName} />}
         {isClickedGrid && <HomePostGrid />}
       </BodyGlobal>
-      <Navbar homeV={true} chatV={true} postV={true} profileV={false} />
+      <Navbar profileIconColor={true} />
     </Layout>
   );
 }
