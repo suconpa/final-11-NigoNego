@@ -12,7 +12,6 @@ const UseFetchToken = () => {
   const postLogin = async data => {
     try {
       const response = await instance.post('/user/login', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('로그인 에러', error);
@@ -23,7 +22,6 @@ const UseFetchToken = () => {
   const getUserInfo = async () => {
     try {
       const response = await getDataBase.get('/user/myinfo');
-      console.log(response);
       return response;
     } catch (error) {
       console.error('팔로잉데이터 요청 에러', error);
@@ -44,7 +42,6 @@ const UseFetchToken = () => {
   const postJoinMemberValid = async data => {
     try {
       const response = await instance.post('/user/accountnamevalid', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('프로필 설정 에러', error);
@@ -55,7 +52,6 @@ const UseFetchToken = () => {
   const postJoinImage = async data => {
     try {
       const response = await imageInstance.post('/image/uploadfile', data);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('이미지 업로드 에러', error);
@@ -66,11 +62,8 @@ const UseFetchToken = () => {
     const { username, email, password, accountname, intro, image } = {
       ...userInfo,
     };
-    console.log(userInfo);
     try {
       const response = await instance.post(`/user`, userInfo);
-      console.log('회원가입성공:', response.data);
-      console.log(userInfo.username);
       return response;
     } catch (error) {
       console.error('API 요청 실패:', error);
@@ -110,7 +103,6 @@ const UseFetchToken = () => {
   const getProfileData = async () => {
     try {
       const response = await getDataBase.get(`/user/myinfo`);
-      console.log('작동');
       return response;
     } catch (error) {
       console.error('Profile오류');

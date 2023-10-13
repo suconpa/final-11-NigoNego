@@ -30,7 +30,6 @@ export default function ProfileUser({ userProfile }) {
   const [click, setClick] = useState();
   const accountAtom = useRecoilValue(accountNameAtom);
   console.log(userProfile);
-  console.log(accountAtom);
   const myData = userProfile.hasOwnProperty('author') ? userProfile : null;
 
   return (

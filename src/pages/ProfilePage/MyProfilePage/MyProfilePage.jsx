@@ -10,18 +10,25 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import HomePostGrid from '../../../components/HomePost/HomePostGrid';
 import Layout from '../../../styles/Layout';
-import { useLocation } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import accountNameAtom from '../../../atom/accountName';
+import UseFetchToken from '../../../Hooks/UseFetchToken';
 
 export default function MyProfilePage() {
   const [isClickedList, setIsClickedList] = useState(true);
   const [isClickedGrid, setIsClickedGrid] = useState(false);
+  const accountName = useRecoilValue(accountNameAtom);
+  const [userData, setUserData] = useState();
+  const { getProfileData } = UseFetchToken();
 
-  // Navbar.jsx 에 navigate state
-  const location = useLocation();
-  const accountName = location.state.userData.user.accountname;
+  useEffect(() => {
+    const getData = async () => {
+      const res = await getProfileData();
+      return setUserData(res.data.user);
+    };
+    getData();
+  }, []);
 
-  const userData = location.state.userData.user;
-  console.log(userData);
   const handleClickList = e => {
     e.preventDefault();
     if (!isClickedList) {
@@ -42,7 +49,7 @@ export default function MyProfilePage() {
     <Layout>
       <HeaderBasicNav />
       <BodyGlobal>
-        <ProfileHeader myData={userData} />
+        {userData && <ProfileHeader myData={userData} />}
         <Product accountName={accountName} />
 
         {/* <PostAlignChangeBut /> */}

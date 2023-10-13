@@ -4,13 +4,10 @@ import styled from 'styled-components';
 import UserSearch from '../common/User/UserSearch';
 import { ReactComponent as BtnComment } from '../../assets/image/BtnComment.svg';
 import Heart from '../common/Heart/Heart';
-import { useRecoilState } from 'recoil';
-import accountNameAtom from '../../atom/accountName';
 
 export default function HomePost({ data }) {
   const navigate = useNavigate();
   const postListRef = useRef(null);
-  const [userId, setUserId] = useRecoilState(accountNameAtom);
 
   const postMainHandler = e => {
     navigate('/postmain', {
@@ -19,10 +16,6 @@ export default function HomePost({ data }) {
       },
     });
   };
-
-  useEffect(() => {
-    setUserId(data);
-  }, []);
 
   return (
     <HomePostwarpper ref={postListRef} className="HomePost">
